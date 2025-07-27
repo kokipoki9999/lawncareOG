@@ -82,11 +82,11 @@ const Blog = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <section id="top" className="relative py-20 bg-gradient-to-br from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Property Care
-            <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Expert Tips</span>
+            <span className="bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent"> Expert Tips</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Discover professional insights, seasonal tips, and expert advice to keep your property 
@@ -105,7 +105,7 @@ const Blog = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -119,7 +119,7 @@ const Blog = () => {
       {/* Featured Post */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+          <div className="bg-gradient-to-br from-red-50 to-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="relative h-64 lg:h-auto">
                 <img
@@ -128,7 +128,7 @@ const Blog = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-gradient-to-r from-red-600 to-red-700 text-white px-3 py-1 rounded-full text-sm font-medium">
                     Featured
                   </span>
                 </div>
@@ -156,7 +156,7 @@ const Blog = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{blogPosts[0].readTime}</span>
-                  <button className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center group">
+                  <button className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center group">
                     Read More
                     <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                   </button>
@@ -207,7 +207,7 @@ const Blog = () => {
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">{post.readTime}</span>
-                    <button className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center group">
+                    <button className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center group">
                       Read More
                       <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </button>
@@ -215,29 +215,6 @@ const Blog = () => {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Stay Updated with Property Care Tips
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Get expert tips, seasonal advice, and exclusive offers delivered to your inbox. 
-            Join hundreds of property owners who trust our expertise.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-6 py-3 rounded-lg text-gray-900 placeholder-gray-500 flex-1 focus:outline-none focus:ring-2 focus:ring-white"
-            />
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300">
-              Subscribe
-            </button>
           </div>
         </div>
       </section>
@@ -254,7 +231,7 @@ const Blog = () => {
           </p>
           <Link
             to="/contact"
-            className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center group"
+            className="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center group"
           >
             Get Your Custom Plan
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />

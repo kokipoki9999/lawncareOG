@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,49 +25,49 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        propertyType: '',
-        serviceType: '',
-        propertySize: '',
-        message: '',
-        preferredContact: 'email'
-      });
-    }, 3000);
+    handleFormSubmit();
+  };
+
+  const handleFormSubmit = async () => {
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([formData]);
+
+      if (error) {
+        console.error('Error submitting form:', error);
+        return;
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: ['(555) 123-4567', 'Available 24/7 for emergencies'],
-      action: 'tel:+15551234567'
+      details: ['(406) 208-9025', 'Available 24/7 for emergencies'],
+      action: 'tel:+14062089025'
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email',
-      details: ['info@greenpro.com', 'Response within 24 hours'],
-      action: 'mailto:info@greenpro.com'
+      details: ['batteigerlawnservice@gmail.com', 'Response within 24 hours'],
+      action: 'mailto:batteigerlawnservice@gmail.com'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Service Area',
-      details: ['Greater Metro Area', '25+ surrounding communities'],
+      details: ['Stanley, Tioga & Newtown Area', '25+ surrounding communities'],
       action: null
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Business Hours',
-      details: ['Mon-Fri: 7AM-6PM', 'Sat: 8AM-4PM, Sun: Emergency only'],
+      details: ['Mon-Fri: 8AM-5PM', 'Sat-Sun: Emergency only'],
       action: null
     }
   ];
@@ -74,11 +75,11 @@ const Contact = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <section id="top" className="relative py-20 bg-gradient-to-br from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Get Your Free
-            <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent"> Property Assessment</span>
+            <span className="bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent"> Property Assessment</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             Ready to transform your property? Get a personalized quote and discover how we can 
@@ -92,7 +93,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-2xl">
+            <div className="bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                 Request Your Free Quote
               </h2>
@@ -121,7 +122,7 @@ const Contact = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                         placeholder="John Smith"
                       />
                     </div>
@@ -136,7 +137,7 @@ const Contact = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                         placeholder="john@email.com"
                       />
                     </div>
@@ -153,7 +154,7 @@ const Contact = () => {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -169,7 +170,7 @@ const Contact = () => {
                         required
                         value={formData.propertyType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                       >
                         <option value="">Select Property Type</option>
                         <option value="residential">Residential Home</option>
@@ -188,13 +189,12 @@ const Contact = () => {
                         required
                         value={formData.serviceType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                       >
                         <option value="">Select Service</option>
                         <option value="lawn-care">Lawn Care</option>
                         <option value="snow-removal">Snow Removal</option>
                         <option value="both">Lawn Care & Snow Removal</option>
-                        <option value="landscaping">Landscaping</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
@@ -209,13 +209,13 @@ const Contact = () => {
                       name="propertySize"
                       value={formData.propertySize}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                     >
                       <option value="">Select Property Size</option>
-                      <option value="small">Small (Under 1/4 acre)</option>
-                      <option value="medium">Medium (1/4 - 1/2 acre)</option>
-                      <option value="large">Large (1/2 - 1 acre)</option>
-                      <option value="extra-large">Extra Large (Over 1 acre)</option>
+                      <option value="small">Small (up to 4,000 sq ft)</option>
+                      <option value="medium">Medium (4,000-7,500 Sq Ft)</option>
+                      <option value="large">Large (7,500-10,000 Sq ft)</option>
+                      <option value="extra-large">X Large (10,000 sq ft +)</option>
                     </select>
                   </div>
 
@@ -231,7 +231,7 @@ const Contact = () => {
                           value="email"
                           checked={formData.preferredContact === 'email'}
                           onChange={handleChange}
-                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-600"
+                          className="w-4 h-4 text-red-600 border-gray-300 focus:ring-red-600"
                         />
                         <span className="ml-2 text-gray-700">Email</span>
                       </label>
@@ -242,7 +242,7 @@ const Contact = () => {
                           value="phone"
                           checked={formData.preferredContact === 'phone'}
                           onChange={handleChange}
-                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-600"
+                          className="w-4 h-4 text-red-600 border-gray-300 focus:ring-red-600"
                         />
                         <span className="ml-2 text-gray-700">Phone</span>
                       </label>
@@ -259,14 +259,14 @@ const Contact = () => {
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200"
                       placeholder="Tell us about your specific needs, current challenges, or any special requirements..."
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center group"
+                    className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center group"
                   >
                     Get My Free Quote
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -288,13 +288,13 @@ const Contact = () => {
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center text-white flex-shrink-0">
                       {info.icon}
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
                       {info.details.map((detail, idx) => (
-                        <p key={idx} className={`text-gray-600 ${idx === 0 && info.action ? 'text-blue-600 hover:text-blue-700' : ''}`}>
+                        <p key={idx} className={`text-gray-600 ${idx === 0 && info.action ? 'text-red-600 hover:text-red-700' : ''}`}>
                           {info.action && idx === 0 ? (
                             <a href={info.action} className="font-medium">
                               {detail}
@@ -309,15 +309,15 @@ const Contact = () => {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 to-green-50 rounded-lg">
+              <div className="mt-8 p-6 bg-gradient-to-br from-red-50 to-white rounded-lg">
                 <h3 className="font-semibold text-gray-900 mb-2">Emergency Services</h3>
                 <p className="text-gray-600 mb-4">
                   Need emergency snow removal or urgent property care? We're available 24/7 
                   for emergency situations.
                 </p>
                 <a
-                  href="tel:+15551234567"
-                  className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center group"
+                  href="tel:+14062089025"
+                  className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center group"
                 >
                   Call Emergency Line
                   <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
@@ -329,7 +329,7 @@ const Contact = () => {
       </section>
 
       {/* Service Areas */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <section className="py-20 bg-gradient-to-br from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             We Serve Your Community
@@ -340,8 +340,8 @@ const Contact = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {[
-              'Downtown', 'Northside', 'Westfield', 'Eastbrook', 'Southpoint', 'Riverside',
-              'Oak Valley', 'Pine Hills', 'Maple Grove', 'Cedar Park', 'Elmwood', 'Fairview'
+              'Tioga', 'Stanley', 'New Town', 'Wildrose', 'Bowbells', 'Crosby',
+              'Hanks', 'Lostwood', 'Lunds Valley', 'Appam', 'Wassaic', 'Columbus'
             ].map((area, index) => (
               <div
                 key={index}
@@ -353,7 +353,7 @@ const Contact = () => {
           </div>
 
           <p className="text-gray-600 mt-8">
-            Don't see your area listed? <span className="text-blue-600 font-medium">Contact us</span> - we're always expanding our service area!
+            Don't see your area listed? <span className="text-red-600 font-medium">Contact us</span> - we're always expanding our service area!
           </p>
         </div>
       </section>

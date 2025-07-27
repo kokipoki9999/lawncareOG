@@ -14,11 +14,11 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-              <Leaf className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+              <img src="/Capture d'écran, le 2025-07-27 à 16.52.46.png" alt="Batteiger Logo" className="w-10 h-10 rounded-lg" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">GreenPro</h1>
+              <h1 className="text-xl font-bold text-gray-900">Batteiger</h1>
               <p className="text-xs text-gray-500">Lawn & Snow Care</p>
             </div>
           </Link>
@@ -28,7 +28,7 @@ const Header = () => {
             <Link
               to="/"
               className={`font-medium transition-colors duration-200 ${
-                isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
               }`}
             >
               Home
@@ -36,7 +36,7 @@ const Header = () => {
             <Link
               to="/about"
               className={`font-medium transition-colors duration-200 ${
-                isActive('/about') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/about') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
               }`}
             >
               About
@@ -44,7 +44,7 @@ const Header = () => {
             <Link
               to="/services"
               className={`font-medium transition-colors duration-200 ${
-                isActive('/services') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/services') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
               }`}
             >
               Services
@@ -52,7 +52,7 @@ const Header = () => {
             <Link
               to="/blog"
               className={`font-medium transition-colors duration-200 ${
-                isActive('/blog') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/blog') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
               }`}
             >
               Blog
@@ -60,7 +60,7 @@ const Header = () => {
             <Link
               to="/contact"
               className={`font-medium transition-colors duration-200 ${
-                isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                isActive('/contact') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
               }`}
             >
               Contact
@@ -70,15 +70,15 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:+15551234567"
-              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              href="tel:+14062089025"
+              className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
             >
               <Phone className="w-4 h-4" />
-              <span className="font-medium">(555) 123-4567</span>
+              <span className="font-medium">(406) 208-9025</span>
             </a>
             <Link
               to="/contact"
-              className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+              className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
             >
               Get Quote
             </Link>
@@ -100,7 +100,7 @@ const Header = () => {
               <Link
                 to="/"
                 className={`font-medium transition-colors duration-200 ${
-                  isActive('/') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  isActive('/') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -109,7 +109,7 @@ const Header = () => {
               <Link
                 to="/about"
                 className={`font-medium transition-colors duration-200 ${
-                  isActive('/about') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  isActive('/about') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -118,7 +118,7 @@ const Header = () => {
               <Link
                 to="/services"
                 className={`font-medium transition-colors duration-200 ${
-                  isActive('/services') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  isActive('/services') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -127,7 +127,7 @@ const Header = () => {
               <Link
                 to="/blog"
                 className={`font-medium transition-colors duration-200 ${
-                  isActive('/blog') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  isActive('/blog') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -136,7 +136,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 className={`font-medium transition-colors duration-200 ${
-                  isActive('/contact') ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
+                  isActive('/contact') ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -144,15 +144,15 @@ const Header = () => {
               </Link>
               <div className="pt-4 border-t border-gray-100">
                 <a
-                  href="tel:+15551234567"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 mb-4"
+                  href="tel:+14062089025"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-red-600 transition-colors duration-200 mb-4"
                 >
                   <Phone className="w-4 h-4" />
-                  <span className="font-medium">(555) 123-4567</span>
+                  <span className="font-medium">(406) 208-9025</span>
                 </a>
                 <Link
                   to="/contact"
-                  className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 inline-block"
+                  className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 inline-block"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Quote
